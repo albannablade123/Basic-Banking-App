@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+  <link rel="stylesheet" href="/stylesheets/style.css">
+
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+
+
+  <title>Home</title>
+</head>
+
+<body>
+  <nav class="navBar">
+
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">BBApp</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="sass.html">About</a></li>
+        <li><a href="badges.html">Customers</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="fslider">
+
+  </section>
+
+  <div class="slider">
+    <ul class="slides">
+      <li>
+        <img
+          src="https://cdn.hipwallpaper.com/i/71/86/L5jZVJ.jpg">
+        <!-- random image -->
+        <div class="caption center-align">
+          <h3>Simple, Accesible, Better</h3>
+          <h5  class="light grey-text text-lighten-3">Our banking app is designed for easy access to everyone </h5>
+        </div>
+      </li>
+      <li>
+        <img
+          src="https://wallpaperaccess.com/full/1393537.jpg">
+        <!-- random image -->
+        <div class="caption left-align">
+          <h3>Easy and simple access to financial activities</h3>
+          <h5 class="light grey-text text-lighten-3">Transfer, receive and check rates at the tip of your fingers.</h5>
+        </div>
+      </li>
+      <li>
+        <img
+          src="https://wallpaperaccess.com/full/2374143.jpg">
+        <!-- random image -->
+        <div class="caption left-align">
+          <h3>High quality service</h3>
+          <h5 class="light grey-text text-lighten-3">For us, the customer always comes first, especially when managing their money</h5>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <section  class="col s12">
+    <div class="row-customer">
+      <div class="col1">
+        <div class="listOfCustomer">
+          <div class="card-content">
+            <span class="card-title">List of Customer</span>
+            <p>View the list of customer, and execute transaction such as transfering money between them .</p>
+            
+            <form action="customers">
+              <button class="waves-effect waves-light btn">Customer List</button>
+          </form>
+          </div>
+          <div class="card-action">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row col s6">
+      <div class="row-about">
+        <div class="col2">
+          <div class="card-content">
+            <span class="card-title">About Us</span>
+            <p>Learn more about the organization, including how we prioritize key things in order to deliver an excellent experience</p>
+          </div>
+          <div class="card-action">
+          </div>
+        </div>
+      </div>
+    </div>
+              
+  </section>
+
+
+  <style>
+    nav {
+      background-color: #116149;
+    }
+    
+  </style>
+  <script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+      var elems = document.querySelectorAll('.slider');
+      var instances = M.Slider.init(elems,{'height' : 550, 'indicators' : true});
+      console.log('reached here');
+    });
+  </script>
+</body>
+
+</html>

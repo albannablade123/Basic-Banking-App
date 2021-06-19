@@ -3,16 +3,22 @@ const mongoose = require('mongoose');
 const {MongoClient} = require('mongodb');
 require('dotenv/config');
 const bodyParser = require('body-parser');
+const path = require('path');
 
 
 
 const app = express();
 
 app.use(bodyParser.json());
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 //Import Routes
-const route = require('./route');
+const route = require('./routes/route');
+const routeHome = require('./routes/home');
 
 app.use('/customers',route);
+app.use('/home',routeHome);
+app.use(express.static(__dirname + '/public'));
 
 async function main() {
     const MongoClient = require('mongodb').MongoClient;

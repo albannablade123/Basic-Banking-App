@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const router = express.Router();
-const Customer = require('./models/post');
+const Customer = require('../models/post');
 
 
 
@@ -9,7 +9,7 @@ const Customer = require('./models/post');
 router.get('/', async (req, res) => {
     try {
         const customers = await Customer.find();
-        res.json(customers);
+        res.render('customers', {data: customers});
     } catch (error) {
 
     }
