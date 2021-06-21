@@ -82,14 +82,7 @@ app.post('/customers/form-submit', async (req, res) =>{
                 current_balance: parseInt(req.body.amount)*-1
             }
         });
-        res.json(UpdatedPost);
 
-        
-    } catch (error) {
-        res.json(error);
-    }
-
-    try {
         const UpdatedTransfer = await Customer.updateOne({
             _id: req.body.userSend
         }, {
@@ -98,7 +91,8 @@ app.post('/customers/form-submit', async (req, res) =>{
             }
         });
         res.json(UpdatedPost);
-       
+
+        
     } catch (error) {
         res.json(error);
     }
