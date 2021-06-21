@@ -15,10 +15,13 @@ app.set('view engine', 'ejs');
 //Import Routes
 const route = require('./routes/route');
 const routeHome = require('./routes/home');
+const Customer = require('./models/post');
 
 app.use('/customers',route);
 app.use('/home',routeHome);
 app.use(express.static(__dirname + '/public'));
+app.use('/static', express.static(__dirname + '/static'));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 async function main() {
     const MongoClient = require('mongodb').MongoClient;
@@ -62,6 +65,43 @@ async function listDatabases(client){
     console.log("Databases:");
     databasesList.databases.forEach(db => console.log(` - ${db.name}`));
 };
+
+app.post('/customers/form-submit', async (req, res) =>{
+    try {
+        const username = req.body;
+        console.log(username);
+        console.log(req.body.uid);
+
+        const UpdatedMinus = await Customer.update({
+            _id: req.body.uid
+        }, {
+            $inc: {
+                current_balance: parseInt(req.body.amount)*-1
+            }
+        });
+        res.json(UpdatedPost);
+
+        
+    } catch (error) {
+        res.json(error);
+    }
+
+    try {
+        const UpdatedTransfer = await Customer.updateOne({
+            _id: req.body.userSend
+        }, {
+            $inc: {
+                current_balance: parseInt(req.body.amount)
+            }
+        });
+        res.json(UpdatedPost);
+       
+    } catch (error) {
+        res.json(error);
+    }
+    
+
+});
  
 
 //How do we start listening to the server

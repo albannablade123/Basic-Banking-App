@@ -3,13 +3,15 @@ const app = express();
 const router = express.Router();
 const Customer = require('../models/post');
 
-
+const bodyParser = require('body-parser');
 
 //List all the customers
 router.get('/', async (req, res) => {
     try {
         const customers = await Customer.find();
-        res.render('customers', {data: customers});
+        res.render('customers', {
+            data: customers
+        });
     } catch (error) {
 
     }
@@ -20,7 +22,9 @@ router.post('/', async (req, res) => {
     const customer = new Customer({
         name: req.body.name,
         email: req.body.email,
+        phone_number: req.body.phone_number,
         current_balance: req.body.current_balance
+
     });
 
     try {
@@ -39,21 +43,24 @@ router.get('/:postId', async (req, res) => {
 
     try {
         const customer = await Customer.findById(req.params.postId);
-
-        res.json(customer);
-
+        const customersList = await Customer.find()
+        const filteredList = customersList.filter(x => x._id.toString() !== req.params.postId);
+        res.render('individual', {
+            data: customer,
+            listCustomer: filteredList
+        });
     } catch (error) {
         res.json(error);
     }
 
-
-    console.log(req.params.postId);
-
 });
 
 //Delete specific customer
-router.delete('/:postId', async (req, res) => {
-    try {
+router.patch('/', async (req, res) => {
+    console.log(req.body);
+
+    /**
+     * try {
         const removedPost = await Customer.deleteOne({
             _id: req.params.postId
         });
@@ -61,8 +68,12 @@ router.delete('/:postId', async (req, res) => {
     } catch (error) {
         res.json(error);
     }
+     */
+
 
 });
+
+
 
 //Update a post
 router.patch('/:postId', async (req, res) => {
@@ -76,8 +87,11 @@ router.patch('/:postId', async (req, res) => {
         });
         res.json(UpdatedPost);
     } catch (error) {
-        res.json({message:error});
+        res.json({
+            message: error
+        });
     }
 });
+
 
 module.exports = router;

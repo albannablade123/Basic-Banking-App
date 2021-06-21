@@ -1,52 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-    <link rel="stylesheet" href="/stylesheets/style.css">
+
+  <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
+
 <body>
-    
-    <nav class="navBar">
 
-        <div class="nav-wrapper">
-          <a href="#" class="brand-logo">BBApp</a>
-          <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="sass.html">About</a></li>
-            <li><a href="home">Home Page</a></li>
-          </ul>
-        </div>
-      </nav>
 
-      <div class="container">
-        <ul class="collection">
-            <h2 class="customer-list">Customer List</h2>
-            <table>
-                <thead>
-                    <th>Number</th>
-                    <th>Name</th>
-                    <th>Current Balance</th>
-                </thead>
-                <% for (var i = 0; i < data.length; i++){ %>
-                    <tr>
-                        <td><%= i+1 %></td>
-                        <td><%= data[i]["name"] %></td>
-                       <td>$<%= data[i]["current_balance"] %></td>
-                     </tr>
-                <% } %>
-            </table>
-            
-        </ul>
-      </div>
+  <nav class="navBar">
 
-      
-    
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">BBApp</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="sass.html">About</a></li>
+        <li><a href="home">Home Page</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <ul class="collection">
+      <h2 class="customer-list">Customer List</h2>
+      <table id="tableId">
+        <thead>
+          <th>Number</th>
+          <th>Name</th>
+          <th>Current Balance</th>
+          <th>Select</th>
+        </thead>
+        <% for (var i=0; i < data.length; i++){ %>
+          <% var test=data[i]["_id"]; %>
+            <tr>
+              <td>
+                <%= i+1 %>
+              </td>
+              <td>
+                <%= data[i]["name"] %>
+              </td>
+              <td>$<%= data[i]["current_balance"] %>
+              </td>
+              <td> <button class="btn waves-effect waves-light" type="submit" onclick="redirectCustomer('<%= test %>')">Submit</button></td>
+             
+            </tr>
+            <% } %>
+      </table>
+
+    </ul>
+  </div>
+
+  <script src="static/loader.js">
+
+  </script>
+
+  
+  <script>
+
+    function redirectCustomer(i) {
+      window.location.href = `customers/${i}`;
+    }
+
+  </script>
+
+
+
 </body>
+
 </html>

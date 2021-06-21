@@ -60,20 +60,6 @@ button{
 
 
 
-.row-customer{
-    padding: 25px 50px 75px 100px;
-    font-size: 1.5em;
-    color:  #116149;
-    grid-column: 1/2;
-}
-
-.row-about{
-    padding: 25px 50px 75px 100px;
-    font-size: 1.5em;
-    color:  #116149;
-    grid-column: 2/3;
-}
-
 td{
     font-size: 1.5em;
     text-align: center;
@@ -91,3 +77,66 @@ th{
     padding: 40px 40px 40px 40px;
     font-weight: 300;
 }
+
+.split {
+    height: 100%;
+    width: 50%;
+    z-index: 1;
+    top: 0;
+    padding-top: 20px;
+  }
+  
+  /* Control the left side */
+  .left {
+    left: 0;
+    padding: 0px 50px 75px 100px;
+    font-size: 1.5em;
+    color:  #116149;
+    grid-column: 1/2;
+  }
+  
+  /* Control the right side */
+  .right {
+    left: 0;
+    padding: 0px 50px 75px 100px;
+    font-size: 1.5em;
+    color:  #116149;
+    grid-column: 1/2;
+  }
+
+  .aboutCustomer{
+    padding-top: 50px;
+  }
+
+  i{
+      font-size: 2rem;
+  }
+
+
+
+  li{
+      font-size: 1.5rem;
+  }
+
+  span{
+      font-size: 1.5rem;
+      font-weight: 500;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-bottom: 90px;
+  }
+
+  .customer-title{
+      padding: 20px 20px 70px 54px;
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 500;
+    color:  #116149;
+  }
+
+  .container{
+    vertical-align: middle;
+  }
+
+  
+  

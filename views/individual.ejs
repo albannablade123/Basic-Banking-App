@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Individual Customer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="/stylesheets/style.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+
+</head>
+
+<body>
+    <nav class="navBar">
+
+        <div class="nav-wrapper">
+            <a href="../home" class="brand-logo">BBApp</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="sass.html">About</a></li>
+                <li><a href="home">Home Page</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section>
+        <h2 class="customer-title">Customer Details</h2>
+        <div class="container">
+            <ul class="collection">
+                <li class="collection-item"><i class="large material-icons">account_circle</i><span>Name: <%=
+                            data["name"] %></span></li>
+                <li class="collection-item"><i class="large material-icons">account_balance</i><span>Current Balance : $
+                        <%= data["current_balance"] %>
+                    </span></li>
+                <li class="collection-item"><i class="large material-icons">contact_phone</i><span>Phone Number : <%=
+                            data["phone_number"] %></span></li>
+                <li class="collection-item"><i class="large material-icons">email</i><span>email : <%= data["email"] %>
+                    </span></li>
+
+
+            </ul>
+
+            <!-- Modal Trigger -->
+            <button data-target="modal1" class="btn modal-trigger">Modal</button>
+
+            <!-- Modal Structure -->
+            <div id="modal1" class="modal modal-fixed-footer" id="modal-based">
+                <div class="modal-content">
+                    <h4>Transfer Money</h4>
+
+                    <div class="row">
+                        <form id="uploadForm">
+                            <div class="input-field col s12">
+                                <select name="user_id" id="user_id" required>
+                                    <option value="" disabled selected>Select who to transfer too</option>
+                                    <% listCustomer.forEach(function(row){ %>
+                                        <% var test=row["_id"]; %>
+                                            <option value="<%= test %>">
+                                                <%= row['name'] %>
+                                            </option>
+                                            <% }) %>
+
+                                </select>
+                            </div>
+                            <div class="input-field col s6">
+                                <input id="amount" required class="validate" name="amount" type="number"
+                                    onblur="dedicatedFunction()" onchange="dedicatedFunction()"
+                                    onfocus="dedicatedFunction() ">
+
+                                <label for="amount">Amount to be transfered </label>
+                                <span class="helper-text"
+                                    data-error="Invalid input: Field must contain only numbers and amount transfered must not be more than balance "
+                                    data-success="Valid"></span>
+                            </div>
+
+                            <button type="submit">submit</button>
+                            <!-- <button class="btn waves-effect waves-light" type="submit" name="action">Transfer
+                                Money
+                                <i class="material-icons right">send</i>
+                            </button> -->
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.modal');
+            var instances = M.Modal.init(elems);
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('select');
+            var instances = M.FormSelect.init(elems);
+        });
+
+        var userData = "<%= data['current_balance'] %>";
+        var userID = "<%= data['_id'] %>";
+
+        function dedicatedFunction() {
+            var val = document.getElementById("amount").value;
+            console.log(userData);
+            if (parseInt(val) > parseInt(userData) || val <= 0 || !val || !val.length || val.length > 20) {
+                document.getElementById("amount").classList.remove("valid");
+                document.getElementById("amount").classList.add("invalid");
+            } else {
+                document.getElementById("amount").classList.remove("invalid");
+                document.getElementById("amount").classList.add("valid");
+            }
+
+        }
+
+        const $form = $('#uploadForm')
+
+        $form.on('submit', submitHandler)
+
+
+        function submitHandler(e) {
+            confirm(`Confirm Transfer money with the amount of: ${$("#amount").val()}`);
+            e.preventDefault()
+
+            $.ajax({
+                url: '/customers/form-submit',
+                type: 'POST',
+                data: {
+                    "amount": $("#amount").val(), "uid": userID, "userSend": $("#user_id").val(), "parent": null,
+                    _method: 'POST'
+                },
+                success: function () {
+
+                }
+            }).then(alert("Transaction Successful.")).then(window.location.href = '/customers');
+        }
+    </script>
+
+
+</body>
+
+</html>

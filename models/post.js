@@ -6,6 +6,7 @@ const CustomerSchema = mongoose.Schema({
         required:true
     },
     email: String,
+    phone_number: String,
     current_balance: Number,
 });
 
