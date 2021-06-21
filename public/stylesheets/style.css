@@ -19,11 +19,21 @@ img {
     opacity: 0.7;
   }
 
-button{
-    color:  #116149;
+.btn{
+    background-color:  #116149;
+}
+
+.container2{
+    align-items: center;
+    padding: 30px 30px 30px 30px;
 }
 
 .listOfCustomer{
+    background-color: white;
+    box-shadow: 5px 10px;
+}
+
+.aboutCustomer{
     background-color: white;
     box-shadow: 5px 10px;
 }
@@ -137,6 +147,68 @@ th{
   .container{
     vertical-align: middle;
   }
+
+  .about-section {
+    padding: 45px;
+    text-align: center;
+    background-color: #13aa52;
+    color: white;
+    padding-left: 200;
+    padding-right: 200;
+    font-size: 1.5rem;
+  }
+
+  .about-section-2 {
+    padding:25px 350px 25px 350px;
+    text-align: center;
+    background-color: #13aa52;
+    color: white;
+    font-size: 1.5rem;
+  }
+  .about-section-3 {
+    padding:25px 350px 150px 350px;
+    text-align: center;
+    background-color: #13aa52;
+    color: white;
+    font-size: 1.5rem;
+    height: 100%;
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+  
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translate3d(0, 100%, 0);
+    }
+  
+    100% {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  
+  @keyframes fadeInRight {
+    0% {
+      opacity: 0;
+      transform: translate3d(100%, 0, 0);
+    }
+  
+    100% {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  
+
 
   
   

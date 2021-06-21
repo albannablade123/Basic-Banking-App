@@ -15,10 +15,13 @@ app.set('view engine', 'ejs');
 //Import Routes
 const route = require('./routes/route');
 const routeHome = require('./routes/home');
+const routeAbout = require('./routes/about');
 const Customer = require('./models/post');
 
 app.use('/customers',route);
 app.use('/home',routeHome);
+app.use('/',routeHome);
+app.use('/about',routeAbout);
 app.use(express.static(__dirname + '/public'));
 app.use('/static', express.static(__dirname + '/static'));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -72,7 +75,7 @@ app.post('/customers/form-submit', async (req, res) =>{
         console.log(username);
         console.log(req.body.uid);
 
-        const UpdatedMinus = await Customer.update({
+        const UpdatedMinus = await Customer.updateOne({
             _id: req.body.uid
         }, {
             $inc: {

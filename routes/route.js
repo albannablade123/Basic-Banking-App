@@ -55,24 +55,6 @@ router.get('/:postId', async (req, res) => {
 
 });
 
-//Delete specific customer
-router.patch('/', async (req, res) => {
-    console.log(req.body);
-
-    /**
-     * try {
-        const removedPost = await Customer.deleteOne({
-            _id: req.params.postId
-        });
-        res.json(removedPost);
-    } catch (error) {
-        res.json(error);
-    }
-     */
-
-
-});
-
 
 
 //Update a post

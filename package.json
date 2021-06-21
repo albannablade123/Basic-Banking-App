@@ -4,7 +4,8 @@
   "description": "A basic banking app that allows transaction between various different users",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -20,15 +21,16 @@
   },
   "homepage": "https://github.com/albannablade123/Basic-Banking-App#readme",
   "dependencies": {
-    "ajax": "0.0.4",
     "body-parser": "^1.19.0",
     "dotenv": "^10.0.0",
-    "ejs": "^3.1.6",
     "express": "^4.17.1",
     "express-session": "^1.17.2",
     "mongodb": "^3.6.9",
     "mongoose": "^5.12.14",
     "nodemon": "^2.0.7",
     "path": "^0.12.7"
+  },
+  "engines":{
+    "node": ">=10.0.0"
   }
 }
