@@ -77,7 +77,7 @@
                                     <% listCustomer.forEach(function(row){ %>
                                         <% var test=row["_id"]; %>
                                             <option value="<%= test %>">
-                                                <%= row['name'] %>
+                                                <%= row['name'] %> (Balance: <%= row['current_balance'] %>)
                                             </option>
                                             <% }) %>
 
