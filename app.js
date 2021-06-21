@@ -108,6 +108,5 @@ app.post('/customers/form-submit', async (req, res) =>{
  
 
 //How do we start listening to the server
-const port = process.env.PORT || 3000;
-const server = app.listen(process.env.PORT || 5000);
+app.listen(process.env.PORT || 5000);
 
